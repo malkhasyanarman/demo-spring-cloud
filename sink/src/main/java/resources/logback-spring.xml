@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <param name="Append" value="false" />
+    <property name ="LOG_FILE" value ="${user.home}/bus/connectors/demo-connector/logs/sink.log"/>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxFileSize>${LOG_FILE_MAX_SIZE:-50MB}</maxFileSize>
+            <maxHistory>${LOG_FILE_MAX_HISTORY:-60}</maxHistory>
+            <totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAPACITY:-500MB}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: remote
+  config:
+    name: web-source
+  cloud:
+    stream:
+      kafka:
+        binder:
+          health-timeout: 3000
+
+destination: database
+
+
+limit: 100
+
+server:
+  port: 8090
