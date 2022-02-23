@@ -2,6 +2,7 @@ package com.madness.service;
 
 import com.madness.demo.dto.TextDataWrapper;
 import com.madness.demo.model.enums.Destination;
+import com.madness.demo.utility.FileUtility;
 import com.madness.demo.utility.LoggingService;
 import com.madness.dto.Request;
 import com.madness.dto.Response;
@@ -45,7 +46,8 @@ public class FileService implements LoggingService {
 			try {
 				TextDataWrapper item = new TextDataWrapper()
 						.setDestination(Destination.valueOf(destination.toUpperCase()))
-						.setData(stringBuilder.toString());
+						.setData(stringBuilder.toString())
+						.setFileName(FileUtility.getFileName(Paths.get(fileLocation)));
 
 				itemProcessor.pushPayload(item);
 				return new Response()

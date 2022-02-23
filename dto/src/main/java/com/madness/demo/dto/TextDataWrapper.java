@@ -11,4 +11,5 @@ public class TextDataWrapper {
 	private Destination destination;
 
 	private String data;
+	private String fileName;
 }
